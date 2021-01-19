@@ -33,6 +33,7 @@ public class AoLController
             // ignored
         }
     }
+    
     public const int AoLMajor = 0;
     public const int AoLMinor = 0;
     public const int AoLPatch = 1;
