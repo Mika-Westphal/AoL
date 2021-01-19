@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoL", "AoL\AoL.csproj", "{06044847-E09F-435C-A72A-7F155E4E07E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoL-Injector", "AoL-Injector\AoL-Injector.csproj", "{387D8520-01B7-4632-9130-E3318B1BE04D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06044847-E09F-435C-A72A-7F155E4E07E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06044847-E09F-435C-A72A-7F155E4E07E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06044847-E09F-435C-A72A-7F155E4E07E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06044847-E09F-435C-A72A-7F155E4E07E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{387D8520-01B7-4632-9130-E3318B1BE04D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{387D8520-01B7-4632-9130-E3318B1BE04D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{387D8520-01B7-4632-9130-E3318B1BE04D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{387D8520-01B7-4632-9130-E3318B1BE04D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
