@@ -15,23 +15,33 @@ namespace AoL.Api
         
         public void Info(object message)
         {
-            File.AppendAllText(_logPath, $"[Info/{Assembly.GetCallingAssembly().GetName().Name}/{DateTime.Now}] {message}\n");
+            message = $"[Info/{Assembly.GetCallingAssembly().GetName().Name}/{DateTime.Now}] {message}";
+            File.AppendAllText(_logPath, message + "\n");
+            Console.WriteLine(message);
         }
         
         public void Warn(string message) => Warn((object) message);
         
         public void Warn(object message)
         {
-            File.AppendAllText(_logPath, $"[Warn/{Assembly.GetCallingAssembly().GetName().Name}/{DateTime.Now}] {message}\n");
+            message = $"[Info/{Assembly.GetCallingAssembly().GetName().Name}/{DateTime.Now}] {message}";
+            File.AppendAllText(_logPath, message + "\n");
+            Console.WriteLine(message);
         }
         
         public void Error(string message) => Error((object) message);
         
         public void Error(object message)
         {
-            File.AppendAllText(_logPath, $"[Error/{Assembly.GetCallingAssembly().GetName().Name}/{DateTime.Now}] {message}\n");
+            message = $"[Info/{Assembly.GetCallingAssembly().GetName().Name}/{DateTime.Now}] {message}";
+            File.AppendAllText(_logPath, message + "\n");
+            Console.WriteLine(message);
         }
 
-        public void Send(string message) => File.AppendAllText(_logPath, message + "\n");
+        public void Send(string message)
+        {
+            File.AppendAllText(_logPath, message + "\n");
+            Console.WriteLine(message);
+        }
     }
 }

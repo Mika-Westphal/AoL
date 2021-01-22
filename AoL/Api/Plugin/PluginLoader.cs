@@ -14,6 +14,7 @@ namespace AoL.Api.Plugin
 
         internal void ActivatePlugins()
         {
+            AoLController.Game.Logger.Info("AoLController.Game.Files.PluginDirectory");
             List<string> paths = Directory.GetFiles(AoLController.Game.Files.PluginDirectory, "*.dll").ToList();
             Dictionary<PluginInformation, KeyValuePair<Type, List<Type>>> dictionary = new Dictionary<PluginInformation, KeyValuePair<Type, List<Type>>>();
             _contexts.Clear();
@@ -34,9 +35,6 @@ namespace AoL.Api.Plugin
                             AoLController.Game.Logger.Info($"The File {assembly.GetName().Name} has a class which inherits from IPlugin but has no PluginInformation ... Default Values will be added");
                             infos = new PluginInformation();
                         }
-
-                        if (pluginpath.Contains("server-shared"))
-                            infos.shared = true;
 
                         var allTypes = assembly.GetTypes().ToList();
                         allTypes.Remove(type);

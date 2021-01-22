@@ -16,7 +16,7 @@ namespace AoL_Injector
         /// </summary>
         public static void LoadSystem()
         {
-            Loader.CreateConsole();
+            CreateConsole();
             string aol = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AoL");
             string logPath = Path.Combine(aol, "logs");
             if (!Directory.Exists(logPath))
@@ -25,7 +25,7 @@ namespace AoL_Injector
             }
             else if (File.Exists(logPath + "/latest.txt"))
             {
-                File.Move(logPath + "/latest.txt", logPath + string.Format("/latest-{0}.txt", DateTime.Now.ToString("MM-dd-yy-h-mm-ss")));
+                File.Move(logPath + "/latest.txt", logPath + $"/latest-{DateTime.Now:MM-dd-yy-h-mm-ss}.txt");
             }
             if (!Directory.Exists(aol))
             {
@@ -33,14 +33,14 @@ namespace AoL_Injector
             }
             List<Assembly> dependencyAssemblies = new List<Assembly>();
             string[] files = Directory.GetFiles(Path.Combine(aol, "dependencies"));
-            for (int i = 0; i < files.Length; i++)
+            foreach (string t in files)
             {
-                Assembly assembly = Assembly.Load(File.ReadAllBytes(files[i]));
+                Assembly assembly = Assembly.Load(File.ReadAllBytes(t));
                 dependencyAssemblies.Add(assembly);
             }
             Assembly assembly2 = Assembly.Load(File.ReadAllBytes(Path.Combine(aol, "AoL.dll")));
-            Loader.printBanner(logPath, assembly2, dependencyAssemblies);
-            Loader.InvokeAssembly(assembly2);
+            printBanner(logPath, assembly2, dependencyAssemblies);
+            InvokeAssembly(assembly2);
         }
 
         /// <summary>
