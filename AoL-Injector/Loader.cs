@@ -77,7 +77,7 @@ namespace AoL_Injector
             try
             {
                 assembly.GetTypes()
-                    .First((Type t) => t.Name == "SynapseController").GetMethods()
+                    .First((Type t) => t.Name == "AoLController").GetMethods()
                     .First((MethodInfo m) => m.Name == "Init")
                     .Invoke(null, null);
             }
