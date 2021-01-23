@@ -1,25 +1,36 @@
 ﻿using System;
 using System.IO;
+using AoL.Api;
 
 namespace AoL
 {
     public class Game
     {
-        public FileLocations Files { get; } = new FileLocations();
+        public static Game Get => AoLController.Game;
+        public FileLocations Files { get; }
+        public Logger Logger { get; }
+
+        public Game()
+        {
+            Files = new FileLocations();
+            Logger = new Logger();
+        }
     }
 
     public class FileLocations
     {
         private string _aolDirectory;
         private string _aolPluginDirectory;
+        private string _aolLogsDirectory;
 
         public FileLocations()
         {
-            _aolDirectory = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\AoL";
-            _aolPluginDirectory = $"{_aolDirectory}\\plugins";
+            _aolDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AoL");
+            _aolPluginDirectory = Path.Combine(_aolDirectory, "plugins");
+            _aolLogsDirectory = Path.Combine(_aolDirectory, "logs");
         }
 
-        public string AolDirectory
+        public string AoLDirectory
         {
             get
             {
@@ -29,7 +40,7 @@ namespace AoL
                 return _aolDirectory;
             }   
         }
-
+        
         public string PluginDirectory
         {
             get
@@ -38,6 +49,17 @@ namespace AoL
                     Directory.CreateDirectory(_aolPluginDirectory);
 
                 return _aolPluginDirectory;
+            }
+        }
+        
+        public string LogsDirectory
+        {
+            get
+            {
+                if (!Directory.Exists(_aolLogsDirectory))
+                    Directory.CreateDirectory(_aolLogsDirectory);
+
+                return _aolLogsDirectory;
             }
         }
     }

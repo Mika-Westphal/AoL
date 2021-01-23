@@ -1,25 +1,25 @@
 ﻿using System;
-using System.IO;
-using AoL;
+using AoL.Api;
+using AoL.Api.Plugin;
 using HarmonyLib;
 
 public class AoLController
 {
-    private static bool IsLoaded = false;
+    private static bool _isLoaded = false;
+    public static AoL.Game Game { get; } = new AoL.Game();
+    public static PluginLoader PluginLoader { get; } = new PluginLoader();
     public static void Init()
     {
-        File.Create("E:\\AoLLaunched");
-        Console.WriteLine("Test");
-        File.Create("E:\\AoLLaunched2");
-        if (IsLoaded) return;
-        IsLoaded = true;
-        var aolController = new AoLController();
+        Game.Logger.Info("Init");
+        if (_isLoaded) return;
+        _isLoaded = true;
+        AoLController aolController = new AoLController();
     }
 
-    internal AoLController()
+    private AoLController()
     {
-        Console.WriteLine("Private");
         PatchMethods();
+        PluginLoader.ActivatePlugins();
     }
 
     private void PatchMethods()
@@ -28,13 +28,11 @@ public class AoLController
         {
             Harmony instance = new Harmony("aol.patches");
             instance.PatchAll();
-            Console.WriteLine("Harmony Patching was sucessfully!");
-            Console.WriteLine(new FileLocations().PluginDirectory);
+            Game.Logger.Info("Harmony Patching was sucessfully!");
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
-            throw;
         }
     }
     

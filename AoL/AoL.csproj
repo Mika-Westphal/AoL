@@ -43,6 +43,10 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="AoLController.cs" />
+        <Compile Include="Api\Logger.cs" />
+        <Compile Include="Api\Plugin\IPlugin.cs" />
+        <Compile Include="Api\Plugin\PluginInformation.cs" />
+        <Compile Include="Api\Plugin\PluginLoader.cs" />
         <Compile Include="Game.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
